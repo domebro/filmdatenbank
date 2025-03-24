@@ -1,0 +1,16 @@
+<div class="movie-list-container">
+  <h2>Beliebte Filme</h2>
+
+  @if(movies().length > 0){
+  <div class="movie-grid">
+    @for (movie of movies(); track movie.id){
+    <div class="movie-card">
+      <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" [alt]="movie.title" />
+      <h3>{{ movie.title }}</h3>
+      <p>⭐ {{ movie.vote_average.toFixed(1) }}</p>
+      <button (click)="viewDetails(movie.id)">Details anzeigen</button>
+    </div>
+    }
+  </div>
+  }
+</div>

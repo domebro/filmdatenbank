@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  tmdbApiKey: 'DEIN_API_KEY_HIER',
+  tmdbApiKey: '8826281b83eb8f0fce15553129972f92',
 };
