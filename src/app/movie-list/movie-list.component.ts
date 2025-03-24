@@ -32,7 +32,6 @@ export class MovieListComponent {
       this.movies.set(response.results || []);
     });
 
-    console.log(this.movies());
   }
 
   viewDetails(movieId: number) {
