@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, Signal, signal, WritableSignal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 import { environment } from '../../environments/environment';
 
@@ -25,11 +26,7 @@ export class TmdbService {
 
   // 🔹 Einzelne Film-Details abrufen
   getMovieDetails(movieId: number): Signal<any> {
-    const movieDetails = signal<any>(null);
     const url = `${this.apiUrl}/movie/${movieId}?api_key=${this.apiKey}&language=de-DE`;
-    this.http.get<any>(url).subscribe((response) => {
-      movieDetails.set(response);
-    });
-    return movieDetails;
+  return toSignal(this.http.get<any>(url), { initialValue: null });
   }
 }

@@ -1,1 +1,11 @@
-<p>movie-detail works!</p>
+<div class="movie-detail-container">
+  @if (movie()) {
+    <h2>{{ movie().title }}</h2>
+    <img [src]="'https://image.tmdb.org/t/p/w500' + movie().poster_path" alt="{{ movie().title }}" />
+
+    <p><strong>📅 Erscheinungsdatum:</strong> {{ movie().release_date }}</p>
+    <p><strong>⭐ Bewertung:</strong> {{ movie().vote_average }}/10</p>
+  } @else {
+    <p>🔄 Lade Filmdetails...</p>
+  }
+</div>
