@@ -1,8 +1,12 @@
-.movies-container {
+.movie-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 20px;
   padding: 20px;
+}
+
+.movie-list-container h2 {
+  text-align: center;
 }
 
 .movie-card {

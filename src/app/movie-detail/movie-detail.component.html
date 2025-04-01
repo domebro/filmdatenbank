@@ -1,11 +1,17 @@
-<div class="movie-detail-container">
-  @if (movie()) {
-    <h2>{{ movie().title }}</h2>
-    <img [src]="'https://image.tmdb.org/t/p/w500' + movie().poster_path" alt="{{ movie().title }}" />
+<div class="movie-detail">
+  <h2>{{ movie()?.title }}</h2>
+  <img [src]="'https://image.tmdb.org/t/p/w500' + movie()?.poster_path" alt="{{ movie()?.title }}" />
+  <p>{{ movie()?.overview }}</p>
 
-    <p><strong>📅 Erscheinungsdatum:</strong> {{ movie().release_date }}</p>
-    <p><strong>⭐ Bewertung:</strong> {{ movie().vote_average }}/10</p>
-  } @else {
-    <p>🔄 Lade Filmdetails...</p>
-  }
+  <h3>🎬 Streaming-Anbieter</h3>
+  <div class="providers">
+    <div *ngFor="let provider of watchProviders()" class="provider">
+      <img [src]="'https://image.tmdb.org/t/p/w92' + provider.logo_path" [alt]="provider.provider_name" />
+      <span>{{ provider.provider_name }}</span>
+    </div>
+  </div>
+
+  <ng-template #noProviders>
+    <p>❌ Keine Streaming-Anbieter verfügbar.</p>
+  </ng-template>
 </div>

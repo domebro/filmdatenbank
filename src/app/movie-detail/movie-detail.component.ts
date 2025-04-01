@@ -16,10 +16,13 @@ export class MovieDetailComponent {
   private movieService = inject(TmdbService);
 
   // 🔹 Signal für die Filmdetails
-  movie: Signal<any>;
+  movie: Signal<any> = signal(null);
+  watchProviders: Signal<any[]> = signal([]);
 
   constructor() {
     const movieId = this.route.snapshot.paramMap.get('id');
-    this.movie = this.movieService.getMovieDetails(Number(movieId));
-  }
+    if (movieId) {
+      this.movie = this.movieService.getMovieDetails(+movieId);
+      this.watchProviders = this.movieService.getWatchProviders(+movieId);
+    }  }
 }
