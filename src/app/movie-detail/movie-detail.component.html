@@ -4,12 +4,13 @@
   <p>{{ movie()?.overview }}</p>
 
   <h3>🎬 Streaming-Anbieter</h3>
-  <div class="providers">
+  <div *ngIf="watchProviders().length > 0"  class="providers">
     <div *ngFor="let provider of watchProviders()" class="provider">
       <img [src]="'https://image.tmdb.org/t/p/w92' + provider.logo_path" [alt]="provider.provider_name" />
       <span>{{ provider.provider_name }}</span>
     </div>
   </div>
+  <p *ngIf="watchProviders().length <= 0">❌ Keine Streaming-Anbieter verfügbar.</p>
 
   <button class="back-btn" (click)="goBack()">⬅️ Zurück zur Übersicht</button>
 </div>
