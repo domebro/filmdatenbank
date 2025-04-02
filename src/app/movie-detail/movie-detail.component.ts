@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, computed, effect, inject, Signal, signal, WritableSignal } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { TmdbService } from '../services/tmdb.service';
 
@@ -13,6 +13,7 @@ import { TmdbService } from '../services/tmdb.service';
 })
 export class MovieDetailComponent {
   private route = inject(ActivatedRoute);
+  private router = inject(Router);
   private movieService = inject(TmdbService);
 
   // 🔹 Signal für die Filmdetails
@@ -24,5 +25,10 @@ export class MovieDetailComponent {
     if (movieId) {
       this.movie = this.movieService.getMovieDetails(+movieId);
       this.watchProviders = this.movieService.getWatchProviders(+movieId);
-    }  }
+    }
+  }
+
+  goBack() {
+    this.router.navigate(['/']);
+  }
 }

@@ -9,7 +9,8 @@
 }
 
 .movie-detail img {
-  width: 100%;
+  width: auto;
+  max-height:400px;
   border-radius: 10px;
 }
 
@@ -28,11 +29,30 @@
 }
 
 .providers {
-  display:flex;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px; /* Abstand zwischen den Logos */
+  margin-top: 10px;
+  justify-content:center;
 }
 
 .provider {
   display: flex;
-    flex: 1;
-    flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100px; /* Einheitliche Breite für jede Kachel */
+}
+
+.provider img {
+  width: 60px;  /* Einheitliche Breite */
+  height: 60px; /* Einheitliche Höhe */
+  object-fit: contain; /* Damit das Logo gut skaliert */
+  border-radius: 8px; /* Leichte Abrundung für ein schöneres Design */
+}
+
+.provider span {
+  margin-top: 5px;
+  font-size: 14px;
+  font-weight: bold;
 }
